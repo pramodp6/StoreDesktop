@@ -1,0 +1,5 @@
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pramod.store.ForgotController"
+      stylesheets="@style.css"
+      spacing="20" alignment="CENTER"
+      prefWidth="500" prefHeight="500">

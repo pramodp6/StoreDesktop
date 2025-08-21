@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pramod.store.UserProfileController"
+      prefWidth="400" prefHeight="300">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Title -->
+    <Label text="User Profile" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <!-- Profile Photo -->
+    <VBox spacing="10" alignment="CENTER">
+        <ImageView fx:id="profileImageView" fitWidth="120" fitHeight="120" pickOnBounds="true" preserveRatio="true"
+                   style="-fx-border-color: gray; -fx-border-width: 2; -fx-border-radius: 60; -fx-background-radius: 60;"/>
+        <Button text="Change Photo" onAction="#onChangePhoto" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+    </VBox>
+
+    <!-- Form Fields -->
+    <TextField fx:id="nameField" promptText="Full Name" prefWidth="350"/>
+    <TextField fx:id="emailField" promptText="Email" prefWidth="350"/>
+    <PasswordField fx:id="passwordField" promptText="Password" prefWidth="350"/>
+    <TextField fx:id="mobileField" promptText="Mobile Number" prefWidth="350"/>
+    <TextArea fx:id="addressField" promptText="Address" prefWidth="350" prefHeight="100" wrapText="true"/>
+
+    <!-- Update Button -->
+    <Button text="Update Profile" onAction="#onUpdateProfile" prefWidth="200"
+            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;"/>
+</VBox>

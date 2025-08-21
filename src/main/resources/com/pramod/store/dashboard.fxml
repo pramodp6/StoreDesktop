@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.pramod.store.DashboardController"
+            prefWidth="800" prefHeight="500">
+
+    <!-- Left Navigation Drawer -->
+    <left>
+        <VBox spacing="20" style="-fx-background-color: #2c3e50;" prefWidth="200">
+            <padding>
+                <Insets top="20" left="10" right="10" bottom="20"/>
+            </padding>
+
+            <Label text="Dashboard" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+
+            <Button text="User Profile" onAction="#onProfileClicked" maxWidth="Infinity" style="-fx-background-color: #34495e; -fx-text-fill: white;" fx:id="profileButton"/>
+            <Button text="Logout" fx:id="logoutButton" onAction="#onLogoutClicked" maxWidth="Infinity" style="-fx-background-color: #34495e; -fx-text-fill: white;"/>
+
+        </VBox>
+    </left>
+
+    <!-- Center Content Area -->
+    <center>
+        <StackPane style="-fx-background-color: #ecf0f1;">
+            <Label text="Welcome to Dashboard!" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        </StackPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" prefWidth="600" prefHeight="400">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="User Profile" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <TextField fx:id="nameField" promptText="Name" prefWidth="300"/>
+    <TextField fx:id="emailField" promptText="Email" prefWidth="300"/>
+    <TextField fx:id="mobileField" promptText="Mobile" prefWidth="300"/>
+    <Button text="Update Profile" onAction="#onUpdateProfile" prefWidth="200"/>
+
+</VBox>

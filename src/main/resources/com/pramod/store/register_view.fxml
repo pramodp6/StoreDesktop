@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.pramod.store.RegisterController"
+            fitToWidth="true" fitToHeight="true">
+
+    <content>
+        <VBox spacing="15" alignment="TOP_CENTER" style="-fx-padding: 30; -fx-background-color: #f0f0f0;" prefWidth="600">
+            <Label text="Register Here" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+            <TextField fx:id="nameField" promptText="Enter Full Name" maxWidth="500"/>
+            <TextField fx:id="emailField" promptText="Enter Email" maxWidth="500"/>
+            <TextField fx:id="usernameField" promptText="Enter Username" maxWidth="500"/>
+            <PasswordField fx:id="passwordField" promptText="Enter Password" maxWidth="500"/>
+            <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" maxWidth="500"/>
+            <TextField fx:id="mobileField" promptText="Enter Mobile Number" maxWidth="500"/>
+            <TextArea fx:id="addressField" promptText="Enter Address" prefRowCount="3" wrapText="true" maxWidth="500"/>
+
+            <Button text="Register" onAction="#onRegisterClicked"
+                    style="-fx-font-size: 16px;
+                           -fx-padding: 8 20;
+                           -fx-background-color: #27ae60;
+                           -fx-text-fill: white;
+                           -fx-background-radius: 30;"
+                    maxWidth="200"/>
+        </VBox>
+    </content>
+</ScrollPane>
