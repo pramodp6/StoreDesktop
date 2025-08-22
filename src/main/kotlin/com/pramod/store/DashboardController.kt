@@ -36,7 +36,7 @@ class DashboardController {
     fun onProfileClicked() {
         // User Profile open करने का code
         try {
-            val loader = FXMLLoader(javaClass.getResource("/com/pramod/store/user_profile.fxml"))
+            val loader = FXMLLoader(javaClass.getResource("/com/pramod/store/values/user_profile.fxml"))
             val root: Parent = loader.load()
             val profileStage = Stage()
             profileStage.title = "User Profile"

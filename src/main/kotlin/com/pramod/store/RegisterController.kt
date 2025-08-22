@@ -1,6 +1,8 @@
 package com.pramod.store
 
 import javafx.fxml.FXML
+import javafx.fxml.FXMLLoader
+import javafx.scene.Scene
 import javafx.scene.control.*
 import javafx.stage.Stage
 
@@ -8,70 +10,88 @@ class RegisterController {
 
     @FXML private lateinit var nameField: TextField
     @FXML private lateinit var emailField: TextField
-    @FXML private lateinit var mobileField: TextField
-    @FXML private lateinit var addressField: TextArea
-
     @FXML private lateinit var usernameField: TextField
     @FXML private lateinit var passwordField: PasswordField
     @FXML private lateinit var confirmPasswordField: PasswordField
+    @FXML private lateinit var mobileField: TextField
+    @FXML private lateinit var addressField: TextArea
+
+    @FXML private lateinit var countryCombo: ComboBox<String>
+    @FXML private lateinit var stateCombo: ComboBox<String>
+    @FXML private lateinit var cityCombo: ComboBox<String>
+
+    @FXML private lateinit var statusLabel: Label
+
+    @FXML
+    fun initialize() {
+        // Sample data (replace with REST API)
+        val countries = listOf("India", "USA")
+        val indiaStates = listOf("Uttar Pradesh", "Maharashtra")
+        val usaStates = listOf("California", "Texas")
+        val indiaCities = mapOf(
+            "Uttar Pradesh" to listOf("Lucknow", "Kanpur"),
+            "Maharashtra" to listOf("Mumbai", "Pune")
+        )
+        val usaCities = mapOf(
+            "California" to listOf("Los Angeles", "San Francisco"),
+            "Texas" to listOf("Dallas", "Houston")
+        )
+
+        countryCombo.items.addAll(countries)
+
+        countryCombo.setOnAction {
+            val selectedCountry = countryCombo.value
+            stateCombo.items.clear()
+            cityCombo.items.clear()
+
+            when (selectedCountry) {
+                "India" -> stateCombo.items.addAll(indiaStates)
+                "USA" -> stateCombo.items.addAll(usaStates)
+            }
+        }
+
+        stateCombo.setOnAction {
+            val selectedCountry = countryCombo.value
+            val selectedState = stateCombo.value
+            cityCombo.items.clear()
+
+            if(selectedCountry == "India") indiaCities[selectedState]?.let { cityCombo.items.addAll(it) }
+            else if(selectedCountry == "USA") usaCities[selectedState]?.let { cityCombo.items.addAll(it) }
+        }
+    }
 
     @FXML
     fun onRegisterClicked() {
-        val name = nameField.text.trim()
-        val email = emailField.text.trim()
-        val mobile = mobileField.text.trim()
-        val address = addressField.text.trim()
-        val username = usernameField.text.trim()
-        val password = passwordField.text.trim()
-        val confirmPassword = confirmPasswordField.text.trim()
-
-        val stage = nameField.scene.window as Stage  // For Toast owner
-        println("DEBUG -> Name: '$name'")
-        // 🔴 Check Empty Fields
-        if (name.isEmpty() || email.isEmpty() || mobile.isEmpty() || address.isEmpty() ||
-            username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            Toast.show(stage, ToastType.ERROR, 2500, "All fields are required ")
+        if (nameField.text.isEmpty() || emailField.text.isEmpty() || usernameField.text.isEmpty() ||
+            passwordField.text.isEmpty() || confirmPasswordField.text.isEmpty() ||
+            mobileField.text.isEmpty() || addressField.text.isEmpty()
+        ) {
+            showStatus("Please fill all fields")
             return
         }
 
-        // 🔴 Email Validation
-        val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$".toRegex()
-        if (!email.matches(emailRegex)) {
-            Toast.show(stage, ToastType.ERROR, 2500, "Invalid Email Address ❌")
+        if (passwordField.text != confirmPasswordField.text) {
+            showStatus("Passwords do not match")
             return
         }
 
-        // 🔴 Mobile Validation (10 digit only, starting with 6-9)
-        if (!mobile.matches("^[6-9][0-9]{9}$".toRegex())) {
-            Toast.show(stage, ToastType.ERROR, 2500, "Invalid Mobile Number ❌")
-            return
-        }
+        if (countryCombo.value.isNullOrEmpty()) { showStatus("Please select a country"); return }
+        if (stateCombo.value.isNullOrEmpty()) { showStatus("Please select a state"); return }
+        if (cityCombo.value.isNullOrEmpty()) { showStatus("Please select a city"); return }
 
-        // 🔴 Username length check
-        if (username.length < 4) {
-            Toast.show(stage, ToastType.ERROR, 2500, "Username must be at least 4 characters ❌")
-            return
-        }
+        showStatus("Registration Successful ✅")
+        // TODO: Call API or store locally
+    }
 
-        // 🔴 Password Strength Check
-        val passwordRegex = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#\$%^&+=!]).{6,}$".toRegex()
-        if (!password.matches(passwordRegex)) {
-            Toast.show(
-                stage,
-                ToastType.ERROR,
-                4000,
-                "Password must contain:\n• At least 6 characters\n• One uppercase letter\n• One lowercase letter\n• One number\n• One special character (@#\$%^&+=!) ❌"
-            )
-            return
-        }
+    @FXML
+    fun onBackClicked() {
+        val stage = nameField.scene.window as Stage
+        val loader = FXMLLoader(javaClass.getResource("/com/pramod/store/login-view.fxml"))
+        val scene = Scene(loader.load(), 500.0, 500.0)
+        stage.scene = scene
+    }
 
-        // 🔴 Password Match Check
-        if (password != confirmPassword) {
-            Toast.show(stage, ToastType.ERROR, 2500, "Passwords do not match ❌")
-            return
-        }
-
-        // ✅ SUCCESS
-        Toast.show(stage, ToastType.SUCCESS, 2500, "User $name registered successfully ✅")
+    private fun showStatus(message: String) {
+        statusLabel.text = message
     }
 }

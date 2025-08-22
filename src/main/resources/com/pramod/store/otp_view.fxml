@@ -1,9 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx/1" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.pramod.store.OtpController"
+      spacing="20" alignment="CENTER" prefWidth="400" prefHeight="250"
+      style="-fx-background-color: linear-gradient(to bottom, #2C3E50, #4CA1AF);">
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.pramod.store.OtpController"
-            prefHeight="400.0" prefWidth="600.0">
+    <Label text="Enter OTP" style="-fx-font-size: 24px; -fx-text-fill: white;"/>
 
-</AnchorPane>
+    <HBox spacing="10" alignment="CENTER">
+        <TextField fx:id="otp1" maxWidth="50" alignment="CENTER"/>
+        <TextField fx:id="otp2" maxWidth="50" alignment="CENTER"/>
+        <TextField fx:id="otp3" maxWidth="50" alignment="CENTER"/>
+        <TextField fx:id="otp4" maxWidth="50" alignment="CENTER"/>
+    </HBox>
+
+    <Label fx:id="timerLabel" text="02:00" style="-fx-text-fill: yellow; -fx-font-size: 16px;"/>
+
+    <Button text="Verify OTP" onAction="#onVerifyClicked"
+            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20; -fx-background-radius: 15;"/>
+
+    <Button fx:id="resendButton" text="Resend OTP" onAction="#onVerifyClicked"
+            style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20; -fx-background-radius: 15;"
+            visible="false"/>
+
+    <Label fx:id="statusLabel" text="" style="-fx-text-fill: yellow;"/>
+</VBox>

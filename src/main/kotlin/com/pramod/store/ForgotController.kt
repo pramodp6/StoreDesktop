@@ -35,18 +35,18 @@ class ForgotController {
 
 
         // यहाँ आप backend / database से update करा सकते हो
-        showAlert("Success", "Password reset successful!")
+       // showAlert("Success", "Password reset successful!")
         goToLogin()
     }
 
-    @FXML
+    /*@FXML
     fun onBackToLoginClicked() {
         goToLogin()
-    }
+    }*/
 
     private fun goToLogin() {
         val stage = emailField.scene.window as Stage
-        val loader = FXMLLoader(javaClass.getResource("/login.fxml"))
+        val loader = FXMLLoader(javaClass.getResource("/com/pramod/store/otp_view.fxml"))
         val scene = Scene(loader.load())
         stage.scene = scene
     }

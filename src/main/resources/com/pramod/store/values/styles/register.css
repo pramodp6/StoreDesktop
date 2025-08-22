@@ -1,0 +1,70 @@
+/* Root ScrollPane Background */
+.scroll-pane {
+    -fx-background-color: linear-gradient(to bottom, #2980b9, #6dd5fa);
+}
+
+/* Outer VBox Padding */
+.root-vbox {
+    -fx-padding: 20;
+    -fx-spacing: 20;
+    -fx-alignment: TOP_CENTER;
+}
+
+/* Back Button */
+.btn-back {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+/* Form Container VBox */
+.form-container {
+    -fx-background-color: rgba(255,255,255,0.95);
+    -fx-padding: 20;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 8, 0.5, 4, 4);
+    -fx-alignment: CENTER;
+    -fx-spacing: 15;
+    -fx-max-width: 480;
+    -fx-min-width: 480;
+}
+
+/* Form Title */
+.form-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* TextField & PasswordField & TextArea */
+.input-field {
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+    -fx-font-size: 14px;
+    -fx-pref-width: 450; /* Fixed width for uniformity */
+}
+
+/* ComboBox - Country, State, City */
+.combo-field {
+    -fx-background-radius: 6;
+    -fx-padding: 8; /* Same padding for all */
+    -fx-font-size: 14px;
+    -fx-pref-width: 450; /* Fixed width for all dropdowns */
+}
+
+/* Register Button */
+.btn-primary {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+    -fx-max-width: 180;
+}
+
+/* Status Label */
+.status-label {
+    -fx-text-fill: red;
+    -fx-font-size: 13px;
+}
