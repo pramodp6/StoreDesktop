@@ -4,61 +4,40 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+
 <StackPane xmlns="http://javafx.com/javafx/1" xmlns:fx="http://javafx.com/fxml"
            fx:controller="com.pramod.store.LoginController"
            prefWidth="400" prefHeight="500"
-           style="-fx-background-color: linear-gradient(to bottom, #42a5f5, #1e88e5);">
+           stylesheets="@/com/pramod/store/styles/login.css"
+           styleClass="root-pane">
 
     <!-- Main Login Form -->
-    <VBox alignment="CENTER" spacing="20" style="-fx-background-color: rgba(255,255,255,0.15); -fx-padding: 40; -fx-background-radius: 15;">
+    <VBox alignment="CENTER" spacing="20" styleClass="login-box">
 
-        <Label text="Login" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        <Label text="Login" styleClass="login-title"/>
 
         <TextField fx:id="usernameField" promptText="Username" maxWidth="300"
-                   style="-fx-background-radius: 5; -fx-padding: 10; -fx-background-color: white;"/>
+                   styleClass="input-field"/>
 
         <PasswordField fx:id="passwordField" promptText="Password" maxWidth="300"
-                       style="-fx-background-radius: 5; -fx-padding: 10; -fx-background-color: white;"/>
-
+                       styleClass="input-field"/>
 
         <Button text="SignIn" onAction="#onLoginClicked"
-                style="-fx-font-size: 16px;
-                           -fx-padding: 8 15;
-                           -fx-background-color: #27ae60;
-                           -fx-text-fill: white;
-                           -fx-background-radius: 20;"
+                styleClass="btn-primary"
                 maxWidth="200"/>
 
-
-
         <HBox spacing="20" alignment="CENTER">
-
             <Button text="SignUp" onAction="#onRegisterClicked"
-                    style="-fx-font-size: 16px;
-                           -fx-padding: 8 15;
-                           -fx-background-color: #27ae60;
-                           -fx-text-fill: white;
-                           -fx-background-radius: 20;"
+                    styleClass="btn-primary"
                     maxWidth="300"/>
-
-
-
-
-
 
             <Button text="ResetUser" onAction="#onForgotPasswordClicked"
-                    style="-fx-font-size: 16px;
-                           -fx-padding: 8 15;
-                           -fx-background-color: #f39c12;
-                           -fx-text-fill: white;
-                           -fx-background-radius: 20;"
+                    styleClass="btn-warning"
                     maxWidth="300"/>
-
         </HBox>
     </VBox>
 
-
     <ProgressIndicator fx:id="progressIndicator" visible="false"
-                       style="-fx-progress-color: #27ae60;" prefWidth="80" prefHeight="80"/>
-
+                       styleClass="progress-indicator-custom"
+                       prefWidth="80" prefHeight="80"/>
 </StackPane>
